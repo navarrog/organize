@@ -1,0 +1,23 @@
+{
+  "name": "Project",
+  "description": "",
+  "main": "app/js/main.js",
+  "authors": [
+    "Name <email@2mundos.net>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#^3.3.6"
+  },
+  "devDependencies": {
+    "angular": "~1.5.8"
+  }
+}
