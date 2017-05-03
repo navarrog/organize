@@ -14,7 +14,7 @@ var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 
 /* Folders */
-var bowerDir = './lib/';
+var bowerDir = './bower_components/';
 var appDir = 'app/';
 var sourceDir = appDir + 'src/';
 var tempDir = appDir + 'tmp/';

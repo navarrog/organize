@@ -7,4 +7,8 @@
   'base/_general.scss';
 
 @import
-  'components/_nav.scss';
+  'components/_nav.scss',
+  'components/heading.scss';
+
+@import
+  'layout/_grids.scss';

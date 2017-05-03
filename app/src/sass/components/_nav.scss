@@ -35,5 +35,9 @@ nav {
     float: right;
     display: flex;
     align-items: center;
+
+    .bold {
+      margin: 0 4px;
+    }
   }
 }

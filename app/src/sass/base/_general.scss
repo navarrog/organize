@@ -1,12 +1,26 @@
 html, body {
   font-family: 'Open Sans', sans-serif;
   font-size: 10px;
+  color: $base-color--dark;
 }
 
 .margin-reset {
   margin: 0;
 }
 
+.padding-reset {
+  padding: 0;
+}
+
 a {
   color: inherit;
+}
+
+hr {
+  width: 100%;
+  border-top-color: #ddd;
+}
+
+section {
+  margin-top: 70px;
 }
