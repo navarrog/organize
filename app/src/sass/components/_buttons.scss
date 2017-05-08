@@ -1,0 +1,17 @@
+.button {
+  min-width: 245px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.button--primary {
+  background-color: $base-color;
+  color: white;
+}
+
+.button--primary:hover {
+  background-color: lighten($base-color, 20%);
+}
