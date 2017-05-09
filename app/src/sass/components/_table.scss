@@ -1,0 +1,22 @@
+.table {
+  tr td:first-child, tr td:last-child {
+    text-align: center;
+  }
+
+  th {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  td {
+    font-size: 1.4rem;
+  }
+}
+
+.table > tbody > tr > th {
+  padding: 15px 0;
+}
+
+.table > tbody > tr > td {
+  padding: 15px 30px;
+}
