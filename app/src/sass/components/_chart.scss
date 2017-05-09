@@ -1,0 +1,37 @@
+.glicemia__chart .ct-line, .glicemia__chart .ct-point {
+  stroke: $base-color--dark;
+}
+
+.glicemia__chart .ct-line {
+  stroke-width: 1px;
+}
+
+.glicemia__chart .ct-point {
+  stroke-width: 5px;
+}
+
+.glicemia__chart .ct-grid {
+  stroke: $base-color--light;
+  stroke-dasharray: 0;
+}
+
+.glicemia__chart .ct-grids .ct-horizontal:first-child, .glicemia__chart .ct-grids .ct-horizontal:nth-child(6) {
+  stroke: none;
+}
+
+.glicemia__chart .ct-label {
+  color: $base-color--dark;
+  font-size: 1.8rem;
+}
+
+.glicemia__chart .ct-label.ct-vertical {
+  margin: 8px -10px 0;
+}
+
+.glicemia__chart .ct-label.ct-horizontal {
+  margin: 13px 0;
+}
+
+.glicemia__chart .ct-labels foreignObject:not(:first-of-type) .ct-label.ct-horizontal {
+  margin-left: -15px;
+}

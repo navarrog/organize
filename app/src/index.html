@@ -7,8 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
         <link rel="stylesheet" href="css/style.css" />
-        <script src="js/main.js"></script>
     </head>
     <body ng-controller="mainController">
       <nav>
@@ -34,6 +34,22 @@
           <div class="heading">
             <h2 class="margin-reset">Glicemia</h2>
             <hr>
+          </div>
+          <div class="glicemia__container">
+            <div class="col-md-8 padding-reset--left">
+              <glicemia-chart class="glicemia__chart">
+
+              </glicemia-chart>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="glicemia__shortcuts">
+                <label>Última Medição</label>
+                <br>
+                <span>22h06</span>
+                <button type="button" class="button button--primary" name="button">Registrar nova medição</button>
+                <button type="button" class="button button--secondary" name="button">Histórico de medições</button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -117,4 +133,6 @@
         </div>
       </div>
     </body>
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script src="js/main.js"></script>
 </html>

@@ -1,0 +1,30 @@
+.glicemia {
+  .glicemia__container {
+    display: flex;
+  }
+
+  .col-md-4 {
+    align-self: center;
+  }
+
+  .glicemia__chart {
+    margin-top: 10px;
+    padding: 40px 60px;
+    width: 100%;
+    display: block;
+    background-color: $grey-color;
+  }
+
+  .glicemia__shortcuts {
+    span {
+      margin-bottom: 40px;
+      display: block;
+      font-size: 5.8rem;
+      font-weight: 600;
+    }
+
+    .button--secondary {
+      margin-top: 15px;
+    }
+  }
+}
