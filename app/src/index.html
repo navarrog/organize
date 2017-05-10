@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.min.css">
         <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
         <link rel="stylesheet" href="css/style.css" />
     </head>
@@ -64,29 +65,30 @@
               <form class="" action="" method="post">
                 <div class="form-group col-md-4 padding-reset--left">
                   <label for="numero">Número</label>
-                  <input type="text" name="numero" value="">
+                  <input type="text" name="numero" ng-model="numero" value="">
                 </div>
                 <div class="form-group col-md-8 padding-reset--right">
                   <label for="unidade">Unidade</label>
-                  <select class="" name="unidade">
+                  <select class="" name="unidade" ng-model="unidade">
                     <option value="">Selecione</option>
-                    <option value="Gramas">Gramas</option>
-                    <option value="Colher(es) de sopa">Colher(es) de sopa</option>
-                    <option value="Colher(es) de chá">Colher(es) de chá</option>
-                    <option value="Xícaras">Xícaras</option>
+                    <option value="1">Gramas</option>
+                    <option value="12">Colher(es) de sopa</option>
+                    <option value="4">Colher(es) de chá</option>
+                    <option value="165">Xícara(s)</option>
+                    <option value="200">Copo(s)</option>
                   </select>
                 </div>
-                <div class="form-group col-md-12 padding-reset">
+                <auto-complete class="form-group col-md-12 padding-reset">
                   <label for="alimento">Alimento</label>
-                  <input type="text" name="alimento" value="">
-                </div>
+                  <input type="text" name="alimento" ng-model="alimento" value="">
+                </auto-complete>
               </form>
             </div>
             <div class="col-md-4 carboidratos__calculo">
               <div class="carboidratos__resultado">
                 <div class="carboidratos__resultado-container">
                   <p>
-                    20g
+                    {{carboidratosResultado | number: 0}}g
                   </p>
                   <span>
                     carboidratos
@@ -95,7 +97,7 @@
               </div>
             </div>
             <div class="col-md-12 padding-reset">
-              <button type="button" class="button button--primary pull-right" name="button">Adicionar ao histórico</button>
+              <button type="button" ng-click="inserirHistorico()" class="button button--primary pull-right" name="button">Adicionar ao histórico</button>
             </div>
           </section>
         </div>
@@ -112,27 +114,18 @@
                   <th>Alimento</th>
                   <th>CHO</th>
                 </tr>
-                <tr>
-                  <td>26/04/17</td>
-                  <td>1 maçã</td>
-                  <td>20g</td>
-                </tr>
-                <tr>
-                  <td>26/04/17</td>
-                  <td>1 copo de leite desnatado</td>
-                  <td>10g</td>
-                </tr>
-                <tr>
-                  <td>26/04/17</td>
-                  <td>4 colheres de sopa de arroz</td>
-                  <td>20g</td>
+                <tr ng-repeat="alimento in historico | limitTo: 3">
+                  <td>{{alimento.data}}</td>
+                  <td>{{alimento.alimento}}</td>
+                  <td>{{alimento.cho}}</td>
                 </tr>
               </table>
             </div>
           </section>
         </div>
       </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.min.js"></script>
+      <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+      <script src="js/main.js"></script>
     </body>
-    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-    <script src="js/main.js"></script>
 </html>
