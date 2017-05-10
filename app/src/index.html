@@ -69,13 +69,13 @@
                 </div>
                 <div class="form-group col-md-8 padding-reset--right">
                   <label for="unidade">Unidade</label>
-                  <select class="" name="unidade" ng-model="unidade">
-                    <option value="">Selecione</option>
-                    <option value="1">Gramas</option>
-                    <option value="12">Colher(es) de sopa</option>
-                    <option value="4">Colher(es) de chá</option>
-                    <option value="165">Xícara(s)</option>
-                    <option value="200">Copo(s)</option>
+                  <select class="unidade" name="unidade" ng-model="unidade">
+                    <option value="" name="Selecione">Selecione</option>
+                    <option value="1" name="Grama(s)">Grama(s)</option>
+                    <option value="12" name="Colher(es) de sopa">Colher(es) de sopa</option>
+                    <option value="4" name="Colher(es) de chá">Colher(es) de chá</option>
+                    <option value="165" name="Xícara(s)">Xícara(s)</option>
+                    <option value="200" name="Copo(s)">Copo(s)</option>
                   </select>
                 </div>
                 <auto-complete class="form-group col-md-12 padding-reset">
@@ -114,10 +114,10 @@
                   <th>Alimento</th>
                   <th>CHO</th>
                 </tr>
-                <tr ng-repeat="alimento in historico | limitTo: 3">
-                  <td>{{alimento.data}}</td>
+                <tr ng-repeat="alimento in historico | limitTo: 5 | orderBy:'data':true">
+                  <td>{{alimento.data | date:'dd/MM/yy'}}</td>
                   <td>{{alimento.alimento}}</td>
-                  <td>{{alimento.cho}}</td>
+                  <td>{{alimento.cho | number: 0}}g</td>
                 </tr>
               </table>
             </div>

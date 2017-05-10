@@ -1,28 +1,7 @@
 var app = angular.module('organize', []);
 
 app.controller('mainController', ['$rootScope', '$scope', function($rootScope, $scope) {
-  $scope.inserirHistorico = function() {
-    $scope.gramasTotais = $scope.numero * $scope.unidade;
-    console.log($scope.gramasTotais, $scope.alimento);
-  }
-
-  $scope.historico = [
-    {
-      'data': '26/04/17',
-      'alimento': '50g de Maçã',
-      'cho': '20g',
-    },
-    {
-      'data': '26/04/17',
-      'alimento': '1 copo de Leite desnatado',
-      'cho': '10g',
-    },
-    {
-      'data': '26/04/17',
-      'alimento': '4 colheres de sopa de Arroz',
-      'cho': '20g',
-    }
-  ];
+  $scope.historico = [];
 
   $scope.$on('alimentosCarboidratos', function(event, args) {
     $scope.calculaCarboidratos(args.data);
@@ -33,6 +12,21 @@ app.controller('mainController', ['$rootScope', '$scope', function($rootScope, $
   $scope.calculaCarboidratos = function(carboidratos) {
     $scope.gramasTotais = $scope.numero * $scope.unidade;
     $scope.carboidratosResultado = carboidratos * $scope.gramasTotais;
+  }
+
+  $scope.inserirHistorico = function() {
+    $scope.unidadeClasse = document.getElementsByClassName('unidade');
+    $scope.unidadeIndex = $scope.unidadeClasse['unidade']['options']['selectedIndex'];
+    $scope.unidadeNome = $scope.unidadeClasse['unidade']['options'][$scope.unidadeIndex].getAttribute('name');
+    $scope.historicoDescricao = $scope.numero + ' ' + $scope.unidadeNome + ' de ' + $scope.alimento;
+    $scope.dataAtual = new Date();
+    $scope.alimentoObjeto = {
+      'data': $scope.dataAtual,
+      'alimento': $scope.historicoDescricao,
+      'cho': $scope.carboidratosResultado
+    }
+    $scope.historico.push($scope.alimentoObjeto);
+    console.log($scope.historico);
   }
 }]);
 
