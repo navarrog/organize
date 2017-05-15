@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="organize">
+    <head>
+        <title>Diabetes Control</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body ng-controller="mainController">
+      <nav>
+        <div class="container">
+          <div class="logo">
+            <h2 class="margin-reset"><span class="logo__highlight">diabetes</span>control</h2>
+          </div>
+          <div class="menu">
+            <ul class="margin-reset">
+              <li><a href="#">Glicemia</a></li>
+              <li><a href="#">Carboidratos</a></li>
+              <li><a href="#">Histórico de Alimentos</a></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            Olá, <span class="bold"> Rafael Messias</span>
+            <i class="material-icons">arrow_drop_down</i>
+          </div>
+        </div>
+      </nav>
+      <section class="glicemia">
+        <div class="container">
+          <div class="heading">
+            <h2 class="margin-reset">Glicemia</h2>
+            <hr>
+          </div>
+          <div class="glicemia__container">
+            <div class="col-md-8 padding-reset--left">
+              <glicemia-chart class="glicemia__chart">
+
+              </glicemia-chart>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="glicemia__shortcuts">
+                <label>Última Medição</label>
+                <br>
+                <span>22h06</span>
+                <button type="button" class="button button--primary" name="button">Registrar nova medição</button>
+                <button type="button" class="button button--secondary" name="button">Histórico de medições</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <div class="col-md-6 grid-section-col">
+          <section class="carboidratos">
+            <div class="heading">
+              <h2 class="margin-reset">Carboidratos</h2>
+              <hr>
+            </div>
+            <div class="col-md-8 padding-reset">
+              <form class="" action="" method="post">
+                <div class="form-group col-md-4 padding-reset--left">
+                  <label for="numero">Número</label>
+                  <input type="text" name="numero" ng-model="numero" value="">
+                </div>
+                <div class="form-group col-md-8 padding-reset--right">
+                  <label for="unidade">Unidade</label>
+                  <select class="unidade" name="unidade" ng-model="unidade">
+                    <option value="" name="Selecione">Selecione</option>
+                    <option value="1" name="Grama(s)">Grama(s)</option>
+                    <option value="12" name="Colher(es) de sopa">Colher(es) de sopa</option>
+                    <option value="4" name="Colher(es) de chá">Colher(es) de chá</option>
+                    <option value="165" name="Xícara(s)">Xícara(s)</option>
+                    <option value="200" name="Copo(s)">Copo(s)</option>
+                  </select>
+                </div>
+                <auto-complete class="form-group col-md-12 padding-reset">
+                  <label for="alimento">Alimento</label>
+                  <input type="text" name="alimento" ng-model="alimento" value="">
+                </auto-complete>
+              </form>
+            </div>
+            <div class="col-md-4 carboidratos__calculo">
+              <div class="carboidratos__resultado">
+                <div class="carboidratos__resultado-container">
+                  <p>
+                    {{carboidratosResultado | number: 0}}g
+                  </p>
+                  <span>
+                    carboidratos
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 padding-reset">
+              <button type="button" ng-click="inserirHistorico()" class="button button--primary pull-right" name="button">Adicionar ao histórico</button>
+            </div>
+          </section>
+        </div>
+        <div class="col-md-6 grid-section-col">
+          <section class="historico">
+            <div class="heading">
+              <h2 class="margin-reset">Histórico de Alimentos</h2>
+              <hr>
+            </div>
+            <div class="col-md-12 padding-reset">
+              <table class="table table-bordered">
+                <tr>
+                  <th>Data</th>
+                  <th>Alimento</th>
+                  <th>CHO</th>
+                </tr>
+                <tr ng-repeat="alimento in historico | limitTo: 5 | orderBy:'data':true">
+                  <td>{{alimento.data | date:'dd/MM/yy'}}</td>
+                  <td>{{alimento.alimento}}</td>
+                  <td>{{alimento.cho | number: 0}}g</td>
+                </tr>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.min.js"></script>
+      <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+      <script src="js/main.js"></script>
+    </body>
+</html>
